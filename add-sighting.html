@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Avistamento - UFO Sightings</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/sci-fi-theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0e17">
 </head>
-<body>
+<body class="auto-theme">
     <header>
         <div class="container">
             <h1>UFO Sightings</h1>
@@ -26,76 +30,60 @@
     </header>
 
     <main>
-        <div class="container">
-            <div id="auth-required" class="alert alert-warning" style="display: none;">
-                Você precisa estar logado para adicionar um avistamento. <a href="login.html">Faça login</a> ou <a href="register.html">registre-se</a>.
-            </div>
-            
-            <div id="add-sighting-form-container" style="display: none;">
-                <h2 class="text-center mb-2">Adicionar Novo Avistamento</h2>
-                <div id="add-sighting-error" class="alert alert-danger" style="display: none;"></div>
-                <div id="add-sighting-success" class="alert alert-success" style="display: none;">Avistamento adicionado com sucesso!</div>
-                
-                <form id="add-sighting-form" class="form-container">
-                    <div class="form-group">
-                        <label for="title">Título do Avistamento</label>
-                        <input type="text" id="title" name="title" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <textarea id="description" name="description" required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="date">Data do Avistamento</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="time">Hora do Avistamento</label>
-                        <input type="time" id="time" name="time" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="category">Categoria</label>
-                        <select id="category" name="category" required>
-                            <option value="">Selecione uma categoria</option>
-                            <option value="luz">Luzes no céu</option>
-                            <option value="objeto">Objeto voador</option>
-                            <option value="encontro">Encontro próximo</option>
-                            <option value="abducao">Possível abdução</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="duration">Duração (minutos)</label>
-                        <input type="number" id="duration" name="duration" min="1" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Localização</label>
-                        <p class="mb-2">Clique no mapa para marcar o local do avistamento</p>
-                        <div id="map-add-sighting" style="height: 300px;"></div>
-                        <input type="hidden" id="latitude" name="latitude" required>
-                        <input type="hidden" id="longitude" name="longitude" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="location-name">Nome do Local</label>
-                        <input type="text" id="location-name" name="location-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="images">Imagens (opcional)</label>
-                        <input type="file" id="images" name="images" multiple accept="image/*">
-                        <div id="image-preview" class="mt-2"></div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-block">Publicar Avistamento</button>
-                </form>
-            </div>
+        <div class="form-container">
+            <h2>Reportar Avistamento</h2>
+            <div id="alert-container"></div>
+            <form id="add-sighting-form">
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input type="text" id="title" name="title" required placeholder="Ex: Luzes estranhas sobre São Paulo">
+                </div>
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <textarea id="description" name="description" required placeholder="Descreva em detalhes o que você viu..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="date">Data do Avistamento</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Hora do Avistamento</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Localização</label>
+                    <input type="text" id="location" name="location" required placeholder="Ex: Avenida Paulista, São Paulo, SP">
+                </div>
+                <div class="form-group">
+                    <label for="type">Tipo de Objeto</label>
+                    <select id="type" name="type" required>
+                        <option value="">Selecione um tipo</option>
+                        <option value="light">Luzes</option>
+                        <option value="disc">Disco</option>
+                        <option value="triangle">Triangular</option>
+                        <option value="cigar">Cilíndrico</option>
+                        <option value="sphere">Esférico</option>
+                        <option value="other">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duração (minutos)</label>
+                    <input type="number" id="duration" name="duration" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="images">Imagens (opcional)</label>
+                    <input type="file" id="images" name="images" multiple accept="image/*">
+                    <div class="upload-preview" id="upload-preview"></div>
+                </div>
+                <div class="form-group">
+                    <label>Localização no Mapa</label>
+                    <div id="map-picker" style="height: 300px; margin-top: 10px; border-radius: var(--border-radius-md);"></div>
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+                    <p class="map-instructions">Clique no mapa para marcar a localização exata do avistamento</p>
+                </div>
+                <button type="submit" class="btn btn-block">Enviar Avistamento</button>
+            </form>
         </div>
     </main>
 
@@ -105,6 +93,11 @@
         </div>
     </footer>
 
+    <!-- Indicador de status offline -->
+    <div id="offline-indicator" style="display: none;">
+        <strong>Você está offline.</strong> Algumas funcionalidades podem estar limitadas.
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -112,7 +105,256 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="js/firebase-config.js"></script>
     <script src="js/auth.js"></script>
+    <script src="js/auth-protection.js"></script>
     <script src="js/map.js"></script>
     <script src="js/add-sighting.js"></script>
+    <script src="js/offline-manager.js"></script>
+    <script>
+        // Registrar o service worker para funcionalidade offline
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar o Service Worker:', error);
+                    });
+            });
+        }
+        
+        // Verificar status online/offline
+        function updateOnlineStatus() {
+            const offlineIndicator = document.getElementById('offline-indicator');
+            if (offlineIndicator) {
+                if (navigator.onLine) {
+                    offlineIndicator.style.display = 'none';
+                } else {
+                    offlineIndicator.style.display = 'block';
+                }
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus(); // Verificar status inicial
+        
+        // Efeitos visuais para os campos de formulário
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, textarea, select');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('input-focus');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('input-focus');
+                });
+            });
+            
+            // Animação para o botão de envio
+            const submitButton = document.querySelector('.btn');
+            submitButton.addEventListener('mouseenter', function() {
+                this.classList.add('btn-hover');
+            });
+            
+            submitButton.addEventListener('mouseleave', function() {
+                this.classList.remove('btn-hover');
+            });
+            
+            // Preview de imagens
+            const imageInput = document.getElementById('images');
+            const previewContainer = document.getElementById('upload-preview');
+            
+            imageInput.addEventListener('change', function() {
+                previewContainer.innerHTML = '';
+                
+                if (this.files) {
+                    Array.from(this.files).forEach(file => {
+                        if (!file.type.match('image.*')) return;
+                        
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            const preview = document.createElement('div');
+                            preview.className = 'image-preview';
+                            preview.style.backgroundImage = `url(${e.target.result})`;
+                            previewContainer.appendChild(preview);
+                            
+                            // Efeito de entrada
+                            setTimeout(() => {
+                                preview.style.opacity = '1';
+                                preview.style.transform = 'scale(1)';
+                            }, 10);
+                        }
+                        
+                        reader.readAsDataURL(file);
+                    });
+                }
+            });
+            
+            // Inicializar mapa para seleção de localização
+            let mapPicker = L.map('map-picker').setView([-23.5505, -46.6333], 13);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19,
+                className: 'map-tiles'
+            }).addTo(mapPicker);
+            
+            let marker;
+            
+            mapPicker.on('click', function(e) {
+                if (marker) {
+                    mapPicker.removeLayer(marker);
+                }
+                
+                marker = L.marker(e.latlng, {
+                    icon: L.divIcon({
+                        className: 'custom-marker',
+                        html: '<div class="marker-pulse"></div>',
+                        iconSize: [30, 30],
+                        iconAnchor: [15, 15]
+                    })
+                }).addTo(mapPicker);
+                
+                document.getElementById('latitude').value = e.latlng.lat;
+                document.getElementById('longitude').value = e.latlng.lng;
+                
+                // Efeito visual de confirmação
+                const mapInstructions = document.querySelector('.map-instructions');
+                mapInstructions.textContent = 'Localização selecionada com sucesso!';
+                mapInstructions.style.color = 'var(--alien-green)';
+                
+                setTimeout(() => {
+                    mapInstructions.textContent = 'Clique no mapa para alterar a localização';
+                    mapInstructions.style.color = '';
+                }, 2000);
+            });
+            
+            // Estilizar o mapa para combinar com o tema
+            document.querySelector('.leaflet-container').style.backgroundColor = 'var(--deep-space)';
+            
+            // Adicionar classe para estilização dos controles do mapa
+            document.querySelectorAll('.leaflet-control').forEach(control => {
+                control.classList.add('sci-fi-control');
+            });
+        });
+    </script>
+    
+    <style>
+        /* Estilos específicos para esta página */
+        .upload-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .image-preview {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--plasma-blue);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+            box-shadow: var(--hologram-shadow);
+        }
+        
+        .map-instructions {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--star-white);
+            opacity: 0.8;
+            text-align: center;
+        }
+        
+        .custom-marker {
+            background: transparent;
+        }
+        
+        .marker-pulse {
+            width: 30px;
+            height: 30px;
+            background-color: var(--alien-green);
+            border-radius: 50%;
+            position: relative;
+            animation: pulse-marker 1.5s infinite;
+        }
+        
+        .marker-pulse::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--alien-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--alien-green);
+        }
+        
+        @keyframes pulse-marker {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            70% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+        }
+        
+        /* Estilização dos controles do mapa */
+        .sci-fi-control {
+            background-color: var(--cosmic-blue) !important;
+            border: 1px solid var(--alien-green) !important;
+            border-radius: var(--border-radius-sm) !important;
+            color: var(--star-white) !important;
+            box-shadow: var(--hologram-shadow) !important;
+        }
+        
+        .sci-fi-control a {
+            color: var(--star-white) !important;
+        }
+        
+        .sci-fi-control a:hover {
+            background-color: var(--nebula-purple) !important;
+        }
+        
+        /* Estilização do input de arquivo */
+        input[type="file"] {
+            background-color: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: var(--border-radius-md);
+            padding: 10px;
+            color: var(--star-white);
+            width: 100%;
+        }
+        
+        input[type="file"]::-webkit-file-upload-button {
+            background: var(--button-gradient);
+            color: var(--star-white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="file"]::-webkit-file-upload-button:hover {
+            box-shadow: var(--neon-glow);
+        }
+    </style>
 </body>
 </html>

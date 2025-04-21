@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modo Offline - UFO Sightings</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .offline-container {
+            text-align: center;
+            padding: 3rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+        }
+        
+        .offline-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .offline-message {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .offline-features {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .offline-features h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .offline-features ul {
+            padding-left: 1.5rem;
+        }
+        
+        .offline-features li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sync-status {
+            background-color: #e1f5fe;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .sync-pending {
+            color: #0277bd;
+        }
+        
+        .sync-complete {
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>UFO Sightings</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sightings.html">Avistamentos</a></li>
+                    <li><a href="add-sighting.html">Adicionar</a></li>
+                    <li><a href="profile.html">Perfil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="offline-container">
+                <img src="images/offline-icon.svg" alt="Ícone Offline" class="offline-icon">
+                <h2 class="offline-title">Você está offline</h2>
+                <p class="offline-message">
+                    Parece que você está sem conexão com a internet no momento. 
+                    Não se preocupe, você ainda pode acessar conteúdo que foi previamente carregado 
+                    e usar algumas funcionalidades do site.
+                </p>
+                
+                <div class="sync-status" id="sync-status">
+                    <p class="sync-pending">
+                        <strong>Status de sincronização:</strong> Você tem dados pendentes que serão sincronizados automaticamente quando sua conexão for restabelecida.
+                    </p>
+                </div>
+                
+                <div class="offline-features">
+                    <h3>O que você pode fazer offline:</h3>
+                    <ul>
+                        <li>Visualizar avistamentos previamente carregados</li>
+                        <li>Criar novos avistamentos (serão sincronizados quando online)</li>
+                        <li>Adicionar comentários (serão sincronizados quando online)</li>
+                        <li>Avaliar avistamentos (será sincronizado quando online)</li>
+                        <li>Acessar seu perfil e informações salvas localmente</li>
+                    </ul>
+                </div>
+                
+                <button id="check-connection" class="btn">Verificar conexão</button>
+                <p class="form-footer">
+                    <a href="index.html">Voltar para a página inicial</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 UFO Sightings - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="js/offline-manager.js"></script>
+    <script>
+        // Verificar conexão quando o botão for clicado
+        document.getElementById('check-connection').addEventListener('click', function() {
+            checkOnlineStatus();
+        });
+        
+        // Verificar status online
+        function checkOnlineStatus() {
+            if (navigator.onLine) {
+                alert('Você está online! Redirecionando para a página inicial...');
+                window.location.href = 'index.html';
+            } else {
+                alert('Você ainda está offline. As funcionalidades continuam limitadas.');
+            }
+        }
+        
+        // Atualizar interface quando ficar online
+        window.addEventListener('online', function() {
+            alert('Conexão restabelecida! Redirecionando para a página inicial...');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
