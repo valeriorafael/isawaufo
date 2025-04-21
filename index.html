@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFO Sightings - Avistamentos de OVNIs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>UFO Sightings</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="sightings.html">Avistamentos</a></li>
+                    <li><a href="add-sighting.html">Adicionar</a></li>
+                    <li><a href="login.html" id="loginBtn">Login</a></li>
+                    <li><a href="register.html" id="registerBtn">Registrar</a></li>
+                    <li><a href="profile.html" id="profileBtn" style="display: none;">Perfil</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Bem-vindo ao UFO Sightings</h2>
+                <p>Reporte e visualize avistamentos de OVNIs ao redor do mundo</p>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="container">
+                <h2>Mapa de Avistamentos</h2>
+                <div id="map"></div>
+            </div>
+        </section>
+
+        <section class="recent-sightings">
+            <div class="container">
+                <h2>Avistamentos Recentes</h2>
+                <div class="sightings-grid" id="recent-sightings-container">
+                    <!-- Avistamentos serão carregados dinamicamente aqui -->
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 UFO Sightings - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/sightings.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Avistamento - UFO Sightings</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>UFO Sightings</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sightings.html">Avistamentos</a></li>
+                    <li><a href="add-sighting.html">Adicionar</a></li>
+                    <li><a href="login.html" id="loginBtn">Login</a></li>
+                    <li><a href="register.html" id="registerBtn">Registrar</a></li>
+                    <li><a href="profile.html" id="profileBtn" style="display: none;">Perfil</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div id="sighting-loading" class="text-center">
+                <p>Carregando detalhes do avistamento...</p>
+            </div>
+            
+            <div id="sighting-not-found" class="alert alert-warning" style="display: none;">
+                Avistamento não encontrado ou foi removido.
+            </div>
+            
+            <div id="sighting-details" class="sighting-details" style="display: none;">
+                <div class="sighting-details-container">
+                    <div class="sighting-details-header">
+                        <h2 id="sighting-title">Título do Avistamento</h2>
+                        <p id="sighting-meta">Publicado por <span id="sighting-author">Nome do Autor</span> em <span id="sighting-date">01/01/2025</span></p>
+                    </div>
+                    
+                    <div class="sighting-details-content">
+                        <p id="sighting-description">Descrição do avistamento...</p>
+                    </div>
+                    
+                    <div class="sighting-details-info">
+                        <h3>Informações</h3>
+                        <p><strong>Data:</strong> <span id="sighting-full-date">01/01/2025</span></p>
+                        <p><strong>Hora:</strong> <span id="sighting-time">20:30</span></p>
+                        <p><strong>Duração:</strong> <span id="sighting-duration">10</span> minutos</p>
+                        <p><strong>Categoria:</strong> <span id="sighting-category">Luzes no céu</span></p>
+                        <p><strong>Localização:</strong> <span id="sighting-location">Nome do Local</span></p>
+                    </div>
+                    
+                    <div class="sighting-details-map">
+                        <h3>Mapa</h3>
+                        <div id="map-details" style="height: 300px;"></div>
+                    </div>
+                    
+                    <div id="sighting-images-container">
+                        <h3>Imagens</h3>
+                        <div id="sighting-images" class="sighting-images">
+                            <!-- Imagens serão carregadas dinamicamente aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="sighting-ratings">
+                        <h3>Avaliações</h3>
+                        <div id="average-rating" class="stars">★★★★☆</div>
+                        <p id="rating-count"><span id="rating-value">4.5</span>/5 (<span id="ratings-number">10</span> avaliações)</p>
+                        
+                        <div id="rating-form-container" class="mt-2">
+                            <h4>Avaliar este avistamento</h4>
+                            <div id="rating-auth-required" class="alert alert-info" style="display: none;">
+                                Você precisa estar logado para avaliar. <a href="login.html">Faça login</a> ou <a href="register.html">registre-se</a>.
+                            </div>
+                            <div id="rating-form" style="display: none;">
+                                <div class="rating-stars">
+                                    <span class="star" data-value="1">★</span>
+                                    <span class="star" data-value="2">★</span>
+                                    <span class="star" data-value="3">★</span>
+                                    <span class="star" data-value="4">★</span>
+                                    <span class="star" data-value="5">★</span>
+                                </div>
+                                <button id="submit-rating" class="btn">Enviar Avaliação</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sighting-comments mt-2">
+                        <h3>Comentários (<span id="comments-count">0</span>)</h3>
+                        
+                        <div id="comments-auth-required" class="alert alert-info" style="display: none;">
+                            Você precisa estar logado para comentar. <a href="login.html">Faça login</a> ou <a href="register.html">registre-se</a>.
+                        </div>
+                        
+                        <div id="comment-form" style="display: none;">
+                            <div class="form-group">
+                                <textarea id="comment-text" placeholder="Escreva seu comentário..."></textarea>
+                            </div>
+                            <button id="submit-comment" class="btn">Enviar Comentário</button>
+                        </div>
+                        
+                        <div id="comments-list" class="mt-2">
+                            <!-- Comentários serão carregados dinamicamente aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="mt-2">
+                        <a href="sightings.html" class="btn">Voltar para a lista</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 UFO Sightings - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/sighting-details.js"></script>
+</body>
+</html>

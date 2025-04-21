@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avistamentos - UFO Sightings</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>UFO Sightings</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sightings.html" class="active">Avistamentos</a></li>
+                    <li><a href="add-sighting.html">Adicionar</a></li>
+                    <li><a href="login.html" id="loginBtn">Login</a></li>
+                    <li><a href="register.html" id="registerBtn">Registrar</a></li>
+                    <li><a href="profile.html" id="profileBtn" style="display: none;">Perfil</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2 class="text-center mb-2">Avistamentos de OVNIs</h2>
+            
+            <div class="filters">
+                <h3>Filtros</h3>
+                <div class="filters-grid">
+                    <div class="form-group">
+                        <label for="date-filter">Data</label>
+                        <input type="date" id="date-filter" name="date-filter">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category-filter">Categoria</label>
+                        <select id="category-filter" name="category-filter">
+                            <option value="">Todas as categorias</option>
+                            <option value="luz">Luzes no céu</option>
+                            <option value="objeto">Objeto voador</option>
+                            <option value="encontro">Encontro próximo</option>
+                            <option value="abducao">Possível abdução</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location-filter">Localização</label>
+                        <input type="text" id="location-filter" name="location-filter" placeholder="Digite uma cidade ou país">
+                    </div>
+                </div>
+                <button id="apply-filters" class="btn">Aplicar Filtros</button>
+                <button id="clear-filters" class="btn" style="background-color: #95a5a6;">Limpar Filtros</button>
+            </div>
+            
+            <div class="map-section">
+                <h3>Mapa de Avistamentos</h3>
+                <div id="map-sightings" style="height: 400px;"></div>
+            </div>
+            
+            <div class="sightings-list mt-2">
+                <h3>Lista de Avistamentos</h3>
+                <div id="sightings-container" class="sightings-grid">
+                    <!-- Avistamentos serão carregados dinamicamente aqui -->
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                </div>
+                
+                <div id="no-results" style="display: none;" class="text-center mt-2">
+                    <p>Nenhum avistamento encontrado com os filtros selecionados.</p>
+                </div>
+                
+                <div id="load-more-container" class="text-center mt-2">
+                    <button id="load-more" class="btn">Carregar Mais</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 UFO Sightings - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/sightings.js"></script>
+</body>
+</html>
