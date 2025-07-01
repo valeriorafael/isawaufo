@@ -1,0 +1,51 @@
+{
+  "name": "UFO Sightings",
+  "short_name": "UFO Sightings",
+  "description": "Plataforma para relatar e explorar avistamentos de OVNIs em todo o mundo",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f4f7f9",
+  "theme_color": "#2c3e50",
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait-primary",
+  "categories": ["social", "news", "maps"],
+  "screenshots": [
+    {
+      "src": "images/screenshot1.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshot2.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Adicionar Avistamento",
+      "short_name": "Adicionar",
+      "description": "Adicionar um novo avistamento de OVNI",
+      "url": "/add-sighting.html",
+      "icons": [{ "src": "images/add-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Ver Mapa",
+      "short_name": "Mapa",
+      "description": "Ver mapa de avistamentos",
+      "url": "/index.html#map",
+      "icons": [{ "src": "images/map-icon.png", "sizes": "96x96" }]
+    }
+  ]
+}

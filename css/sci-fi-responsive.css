@@ -1,0 +1,463 @@
+/* Melhorias de responsividade para o tema sci-fi de espaço profundo
+   Este arquivo contém ajustes específicos para garantir que o design
+   seja perfeito em todos os tamanhos de dispositivos */
+
+/* Ajustes para tablets e dispositivos médios */
+@media (max-width: 768px) {
+  /* Ajustes de layout */
+  .container {
+    width: 95%;
+  }
+  
+  /* Ajustes de navegação */
+  header .container {
+    flex-direction: column;
+    padding: var(--spacing-md) 0;
+  }
+  
+  header h1 {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-3xl);
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  nav ul li a {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Ajustes da seção hero */
+  .hero {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .hero h2 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero p {
+    font-size: var(--font-size-lg);
+    max-width: 90%;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+  
+  .hero-buttons .btn {
+    margin: var(--spacing-xs) !important;
+  }
+  
+  /* Ajustes do carrossel */
+  .carousel-slide {
+    height: 350px;
+  }
+  
+  .carousel-content h3 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Ajustes do mapa */
+  #map {
+    height: 350px;
+  }
+  
+  /* Ajustes dos cards */
+  .sightings-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+  
+  /* Ajustes dos formulários */
+  .form-container {
+    max-width: 90%;
+    padding: var(--spacing-lg);
+  }
+  
+  .form-container h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  /* Ajustes dos botões de login social */
+  .social-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .social-button {
+    min-width: 100px;
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+/* Ajustes para smartphones e dispositivos pequenos */
+@media (max-width: 576px) {
+  /* Ajustes de navegação */
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+  
+  nav ul li {
+    margin: var(--spacing-xs) 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+  
+  /* Ajustes da seção hero */
+  .hero {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .hero h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .hero p {
+    font-size: var(--font-size-md);
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    margin: var(--spacing-xs) 0 !important;
+    text-align: center;
+  }
+  
+  /* Ajustes do carrossel */
+  .carousel-slide {
+    height: 250px;
+  }
+  
+  .carousel-content {
+    padding: var(--spacing-md);
+  }
+  
+  .carousel-content h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .carousel-content p {
+    font-size: var(--font-size-sm);
+  }
+  
+  .carousel-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  /* Ajustes do mapa */
+  #map {
+    height: 300px;
+  }
+  
+  /* Ajustes dos cards */
+  .sightings-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  /* Ajustes dos formulários */
+  .form-container {
+    padding: var(--spacing-md);
+  }
+  
+  .form-group {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .form-group label {
+    font-size: var(--font-size-sm);
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Ajustes dos botões */
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Ajustes dos botões de login social */
+  .social-buttons {
+    flex-direction: column;
+  }
+  
+  .social-button {
+    width: 100%;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  /* Ajustes do cursor personalizado */
+  .custom-cursor {
+    display: none;
+  }
+  
+  body, a, button, .btn, input, select, textarea {
+    cursor: auto;
+  }
+  
+  /* Ajustes do indicador offline */
+  #offline-indicator {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
+/* Ajustes para dispositivos muito pequenos */
+@media (max-width: 320px) {
+  /* Ajustes de cabeçalho */
+  header h1 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  /* Ajustes da seção hero */
+  .hero h2 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .hero p {
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Ajustes do carrossel */
+  .carousel-slide {
+    height: 200px;
+  }
+  
+  .carousel-content h3 {
+    font-size: var(--font-size-md);
+  }
+  
+  .carousel-content p {
+    font-size: var(--font-size-xs);
+  }
+  
+  .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  /* Ajustes do mapa */
+  #map {
+    height: 250px;
+  }
+  
+  /* Ajustes dos formulários */
+  .form-container h2 {
+    font-size: var(--font-size-lg);
+  }
+  
+  /* Ajustes de efeitos visuais */
+  .hologram-effect {
+    /* Simplificar efeitos em dispositivos muito pequenos */
+    text-shadow: 0 0 5px var(--alien-green);
+  }
+  
+  .hologram-glow, .hologram-noise {
+    display: none;
+  }
+  
+  /* Desativar algumas animações para melhorar o desempenho */
+  .floating, .pulse, .animate-element {
+    animation: none !important;
+  }
+  
+  /* Ajustes de partículas */
+  #particle-canvas {
+    opacity: 0.3;
+  }
+}
+
+/* Ajustes para telas grandes e monitores */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  
+  /* Aumentar tamanho do mapa */
+  #map {
+    height: 600px;
+  }
+  
+  /* Ajustes do carrossel */
+  .carousel-slide {
+    height: 450px;
+  }
+  
+  /* Ajustes dos cards */
+  .sightings-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+/* Ajustes para telas muito grandes */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  /* Aumentar tamanho do mapa */
+  #map {
+    height: 700px;
+  }
+  
+  /* Ajustes do carrossel */
+  .carousel-slide {
+    height: 500px;
+  }
+  
+  /* Ajustes dos cards */
+  .sightings-grid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
+
+/* Ajustes para dispositivos com tela sensível ao toque */
+@media (hover: none) {
+  /* Simplificar efeitos de hover */
+  .btn:hover, 
+  .social-button:hover,
+  .sighting-card:hover,
+  nav ul li a:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Aumentar áreas de toque */
+  nav ul li a,
+  .btn,
+  .social-button,
+  .carousel-arrow,
+  .carousel-dot {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+  }
+  
+  /* Desativar efeitos de hover complexos */
+  .hover-glow:hover {
+    box-shadow: none !important;
+  }
+  
+  /* Desativar cursor personalizado */
+  .custom-cursor {
+    display: none;
+  }
+  
+  body, a, button, .btn, input, select, textarea {
+    cursor: auto;
+  }
+}
+
+/* Ajustes para modo escuro do sistema */
+@media (prefers-color-scheme: dark) {
+  body.auto-theme {
+    /* Já está no modo escuro por padrão */
+  }
+}
+
+/* Ajustes para modo claro do sistema */
+@media (prefers-color-scheme: light) {
+  body.auto-theme {
+    /* Aplicar tema claro */
+    --space-black: #f0f4f8;
+    --deep-space: #e1e8f0;
+    --cosmic-blue: #c5d5e8;
+    --nebula-purple: #d8c5e8;
+    --star-white: #1a202c;
+    
+    --card-gradient: linear-gradient(to bottom, rgba(197, 213, 232, 0.8), rgba(240, 244, 248, 0.9));
+    --space-gradient: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-blue) 50%, var(--nebula-purple) 100%);
+    
+    --cosmic-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Ajustes para usuários que preferem movimento reduzido */
+@media (prefers-reduced-motion) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+  
+  .floating, 
+  .pulse, 
+  .animate-element,
+  .hologram-glow,
+  .hologram-noise,
+  .typing-cursor,
+  .map-scanner,
+  .carousel-track {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  #particle-canvas {
+    display: none;
+  }
+}
+
+/* Ajustes para acessibilidade */
+@media screen and (prefers-contrast: high) {
+  :root {
+    --alien-green: #00ffff;
+    --plasma-blue: #4d94ff;
+    --warp-purple: #b280ff;
+    --nova-pink: #ff66b3;
+    --ufo-yellow: #ffcc00;
+    --pulsar-red: #ff5555;
+  }
+  
+  .text-gradient-space,
+  .text-gradient-alien,
+  .text-gradient-cosmic {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: var(--alien-green) !important;
+  }
+  
+  input, textarea, select {
+    border: 2px solid var(--alien-green) !important;
+  }
+  
+  .btn, button {
+    background: var(--cosmic-blue) !important;
+    color: var(--space-black) !important;
+    border: 2px solid var(--alien-green) !important;
+  }
+}

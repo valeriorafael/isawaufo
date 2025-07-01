@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFO Sightings - Avistamentos de OVNIs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/sci-fi-variables.css">
+    <link rel="stylesheet" href="css/sci-fi-theme.css">
+    <link rel="stylesheet" href="css/sci-fi-responsive.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#050810">
+</head>
+<body class="auto-theme">
+    <header>
+        <div class="container">
+            <h1 class="text-gradient-space">UFO Sightings</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="sightings.html">Avistamentos</a></li>
+                    <li><a href="add-sighting.html">Adicionar</a></li>
+                    <li><a href="login.html" id="loginBtn">Login</a></li>
+                    <li><a href="register.html" id="registerBtn">Registrar</a></li>
+                    <li><a href="profile.html" id="profileBtn" style="display: none;">Perfil</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2 class="floating text-gradient-alien">Bem-vindo ao UFO Sightings</h2>
+                <p>Reporte e visualize avistamentos de OVNIs ao redor do mundo</p>
+                <div class="hero-buttons" style="margin-top: 2rem;">
+                    <a href="sightings.html" class="btn">Explorar Avistamentos</a>
+                    <a href="add-sighting.html" class="btn" style="margin-left: 1rem; background: rgba(0, 246, 255, 0.2); border: 1px solid var(--alien-green);">Reportar Avistamento</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carrossel de destaques -->
+        <section class="carousel-section">
+            <div class="container">
+                <h2 class="text-center text-gradient-cosmic">Avistamentos em Destaque</h2>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Slides serão carregados dinamicamente -->
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Luzes misteriosas no céu noturno">
+                            <div class="carousel-content">
+                                <h3 class="text-alien">Luzes Misteriosas em São Paulo</h3>
+                                <p>Formação de luzes brilhantes observadas pairando sobre a cidade por mais de 30 minutos.</p>
+                                <a href="#" class="details-link">Ver detalhes</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Objeto metálico no céu">
+                            <div class="carousel-content">
+                                <h3 class="text-plasma">Objeto Metálico no Rio de Janeiro</h3>
+                                <p>Objeto em forma de disco metálico avistado por dezenas de pessoas na praia de Copacabana.</p>
+                                <a href="#" class="details-link">Ver detalhes</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Formação triangular">
+                            <div class="carousel-content">
+                                <h3 class="text-warp">Formação Triangular em Brasília</h3>
+                                <p>Três luzes em formação triangular observadas sobre o Congresso Nacional por mais de uma hora.</p>
+                                <a href="#" class="details-link">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-prev" id="carousel-prev">&#10094;</button>
+                    <button class="carousel-arrow carousel-next" id="carousel-next">&#10095;</button>
+                </div>
+                <div class="carousel-nav" id="carousel-nav">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="container">
+                <h2 class="text-gradient-space">Mapa de Avistamentos</h2>
+                <div id="map"></div>
+            </div>
+        </section>
+
+        <section class="recent-sightings">
+            <div class="container">
+                <h2 class="text-gradient-cosmic">Avistamentos Recentes</h2>
+                <div class="sightings-grid" id="recent-sightings-container">
+                    <!-- Avistamentos serão carregados dinamicamente aqui -->
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                    <div class="sighting-card skeleton"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 UFO Sightings - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Indicador de status offline -->
+    <div id="offline-indicator" style="display: none;">
+        <strong>Você está offline.</strong> Algumas funcionalidades podem estar limitadas.
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/sightings.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/offline-manager.js"></script>
+    <script src="js/sci-fi-effects.js"></script>
+    <script>
+        // Registrar o service worker para funcionalidade offline
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar o Service Worker:', error);
+                    });
+            });
+        }
+        
+        // Verificar status online/offline
+        function updateOnlineStatus() {
+            const offlineIndicator = document.getElementById('offline-indicator');
+            if (offlineIndicator) {
+                if (navigator.onLine) {
+                    offlineIndicator.style.display = 'none';
+                } else {
+                    offlineIndicator.style.display = 'block';
+                }
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus(); // Verificar status inicial
+        
+        // Carrossel
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('carousel-track');
+            const slides = track.getElementsByClassName('carousel-slide');
+            const dots = document.getElementById('carousel-nav').getElementsByClassName('carousel-dot');
+            const prevButton = document.getElementById('carousel-prev');
+            const nextButton = document.getElementById('carousel-next');
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Atualizar dots
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].classList.remove('active');
+                }
+                dots[currentIndex].classList.add('active');
+            }
+            
+            // Event listeners para os botões
+            prevButton.addEventListener('click', function() {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                updateCarousel();
+            });
+            
+            nextButton.addEventListener('click', function() {
+                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+            
+            // Event listeners para os dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            }
+            
+            // Auto-play do carrossel
+            setInterval(function() {
+                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 120px;
+}
+
+.social-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.google-button {
+    background-color: white;
+    color: #444;
+    border: 1px solid #ddd;
+}
+
+.google-button:hover {
+    background-color: #f1f1f1;
+}
+
+.facebook-button {
+    background-color: #3b5998;
+    color: white;
+}
+
+.facebook-button:hover {
+    background-color: #344e86;
+}
+
+.twitter-button {
+    background-color: #1da1f2;
+    color: white;
+}
+
+.twitter-button:hover {
+    background-color: #0d95e8;
+}
+
+.social-login-container {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Estilos para o indicador de offline */
+#offline-indicator {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-size: 14px;
+    max-width: 300px;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos para o modo escuro */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-theme .form-container,
+body.dark-theme .sighting-card,
+body.dark-theme .sighting-details-container,
+body.dark-theme .filters,
+body.dark-theme .profile-container {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea,
+body.dark-theme .form-group select {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-theme .stat-card {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .form-group label,
+body.dark-theme .sighting-card h3 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .sighting-card p,
+body.dark-theme .profile-info p {
+    color: #aaa;
+}
+
+body.dark-theme .google-button {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-theme .google-button:hover {
+    background-color: #3d3d3d;
+}
+
+/* Melhorias para dispositivos muito pequenos */
+@media (max-width: 320px) {
+    .social-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .social-button {
+        width: 100%;
+    }
+    
+    #offline-indicator {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        max-width: none;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+/* Melhorias de acessibilidade para toque */
+@media (max-width: 768px) {
+    .social-button {
+        padding: 12px 15px;
+        min-height: 44px;
+    }
+}

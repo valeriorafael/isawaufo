@@ -1,0 +1,433 @@
+/* Estilos responsivos aprimorados para o site UFO Sightings */
+
+/* Dispositivos médios (tablets, até 768px) */
+@media (max-width: 768px) {
+    /* Ajustes gerais */
+    body {
+        font-size: 15px;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+    
+    /* Header e navegação */
+    header .container {
+        flex-direction: column;
+    }
+    
+    header h1 {
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 0.5rem;
+    }
+    
+    /* Seção Hero */
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    /* Mapa */
+    #map {
+        height: 300px;
+    }
+    
+    /* Grid de avistamentos */
+    .sightings-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    /* Formulários */
+    .form-container {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+    
+    /* Detalhes de avistamento */
+    .sighting-details-container {
+        padding: 1.5rem;
+    }
+    
+    .sighting-images {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    /* Perfil */
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-avatar {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Dispositivos pequenos (smartphones, até 576px) */
+@media (max-width: 576px) {
+    /* Ajustes gerais */
+    body {
+        font-size: 14px;
+    }
+    
+    /* Header e navegação */
+    header h1 {
+        font-size: 1.4rem;
+    }
+    
+    nav ul li {
+        margin: 0.3rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+    
+    /* Seção Hero */
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    /* Mapa */
+    #map {
+        height: 250px;
+    }
+    
+    /* Grid de avistamentos */
+    .sightings-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    /* Formulários */
+    .form-container {
+        padding: 1.2rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Detalhes de avistamento */
+    .sighting-details-container {
+        padding: 1.2rem;
+    }
+    
+    .sighting-details-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .sighting-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Filtros */
+    .filters {
+        padding: 1.2rem;
+    }
+    
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Perfil */
+    .profile-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .stat-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Dispositivos muito pequenos (smartphones pequenos, até 320px) */
+@media (max-width: 320px) {
+    /* Ajustes gerais */
+    body {
+        font-size: 13px;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0 8px;
+    }
+    
+    /* Header e navegação */
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 0.2rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.85rem;
+    }
+    
+    /* Seção Hero */
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+    }
+    
+    /* Mapa */
+    #map {
+        height: 200px;
+    }
+    
+    /* Formulários */
+    .form-container {
+        padding: 1rem;
+        margin: 2rem auto;
+    }
+    
+    .form-container h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Detalhes de avistamento */
+    .sighting-details-container {
+        padding: 1rem;
+    }
+    
+    .sighting-details-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .sighting-images {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Filtros */
+    .filters {
+        padding: 1rem;
+    }
+    
+    .filters h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Perfil */
+    .profile-container {
+        padding: 1rem;
+    }
+    
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .profile-info h2 {
+        font-size: 1.3rem;
+    }
+    
+    .profile-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Social login buttons */
+    .social-buttons {
+        flex-direction: column;
+    }
+    
+    .social-button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Alertas */
+    .alert {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Melhorias de acessibilidade para toque em dispositivos móveis */
+@media (max-width: 768px) {
+    /* Aumentar área de toque para elementos interativos */
+    .btn, 
+    button,
+    nav ul li a,
+    .sighting-card .details-link,
+    .form-footer a,
+    input[type="checkbox"],
+    input[type="radio"] {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Ajustar espaçamento para facilitar o toque */
+    nav ul li {
+        margin: 0.3rem 0.5rem;
+    }
+    
+    .form-check {
+        padding: 0.5rem 0;
+    }
+    
+    /* Aumentar tamanho de controles de formulário */
+    select {
+        height: 44px;
+    }
+}
+
+/* Suporte para modo escuro */
+@media (prefers-color-scheme: dark) {
+    body.auto-theme {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    
+    body.auto-theme .form-container,
+    body.auto-theme .sighting-card,
+    body.auto-theme .sighting-details-container,
+    body.auto-theme .filters,
+    body.auto-theme .profile-container {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+    }
+    
+    body.auto-theme .form-group input,
+    body.auto-theme .form-group textarea,
+    body.auto-theme .form-group select {
+        background-color: #2d2d2d;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+    
+    body.auto-theme .stat-card {
+        background-color: #2d2d2d;
+    }
+    
+    body.auto-theme .form-group label,
+    body.auto-theme .sighting-card h3 {
+        color: #e0e0e0;
+    }
+    
+    body.auto-theme .sighting-card p,
+    body.auto-theme .profile-info p {
+        color: #aaa;
+    }
+    
+    body.auto-theme .alert-success {
+        background-color: #0d3a1f;
+        color: #8fd19e;
+        border-color: #1e4a2e;
+    }
+    
+    body.auto-theme .alert-danger {
+        background-color: #3a0d0d;
+        color: #d18f8f;
+        border-color: #4a1e1e;
+    }
+    
+    body.auto-theme .alert-warning {
+        background-color: #3a2e0d;
+        color: #d1c18f;
+        border-color: #4a3e1e;
+    }
+    
+    body.auto-theme .alert-info {
+        background-color: #0d293a;
+        color: #8fb7d1;
+        border-color: #1e394a;
+    }
+}
+
+/* Melhorias de desempenho para dispositivos de baixo poder */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .sighting-card:hover {
+        transform: none;
+    }
+}

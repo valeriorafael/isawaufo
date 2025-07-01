@@ -1,0 +1,281 @@
+/* Arquivo de variáveis de cores e tipografia para o tema sci-fi de espaço profundo
+   Este arquivo contém definições de cores, gradientes e tipografia para o tema */
+
+:root {
+  /* Cores primárias - versão aprimorada */
+  --space-black: #050810;
+  --deep-space: #0c1220;
+  --cosmic-blue: #162a47;
+  --nebula-purple: #2d1a56;
+  --star-white: #e9f1ff;
+  
+  /* Cores de acento - versão aprimorada */
+  --alien-green: #00f6ff;
+  --plasma-blue: #3b82f6;
+  --warp-purple: #8b5cf6;
+  --nova-pink: #ec4899;
+  --ufo-yellow: #fbbf24;
+  --pulsar-red: #ef4444;
+  
+  /* Gradientes aprimorados */
+  --space-gradient: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-blue) 50%, var(--nebula-purple) 100%);
+  --glow-gradient: linear-gradient(90deg, transparent, var(--alien-green), transparent);
+  --button-gradient: linear-gradient(90deg, var(--plasma-blue), var(--warp-purple));
+  --card-gradient: linear-gradient(to bottom, rgba(22, 42, 71, 0.8), rgba(5, 8, 16, 0.9));
+  --hero-gradient: linear-gradient(rgba(5, 8, 16, 0.8), rgba(12, 18, 32, 0.9));
+  
+  /* Sombras e efeitos aprimorados */
+  --neon-glow: 0 0 10px rgba(0, 246, 255, 0.5), 0 0 20px rgba(0, 246, 255, 0.3);
+  --cosmic-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --hologram-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  
+  /* Bordas */
+  --border-radius-sm: 10px;
+  --border-radius-md: 15px;
+  --border-radius-lg: 25px;
+  --border-radius-xl: 35px;
+  --border-radius-full: 50%;
+  
+  /* Tipografia */
+  --font-primary: 'Exo 2', sans-serif;
+  --font-secondary: 'Rajdhani', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  
+  /* Tamanhos de fonte */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  
+  /* Espaçamento */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Opacidade */
+  --opacity-low: 0.3;
+  --opacity-medium: 0.6;
+  --opacity-high: 0.9;
+  
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-index */
+  --z-background: -10;
+  --z-default: 1;
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-tooltip: 400;
+  --z-max: 9999;
+}
+
+/* Aplicação de tipografia */
+body {
+  font-family: var(--font-primary);
+  color: var(--star-white);
+  background-color: var(--space-black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+}
+
+p, input, textarea, select, button {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-md);
+}
+
+.btn, button {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* Estilos para texto especial */
+.text-alien {
+  color: var(--alien-green);
+}
+
+.text-plasma {
+  color: var(--plasma-blue);
+}
+
+.text-warp {
+  color: var(--warp-purple);
+}
+
+.text-nova {
+  color: var(--nova-pink);
+}
+
+.text-ufo {
+  color: var(--ufo-yellow);
+}
+
+.text-pulsar {
+  color: var(--pulsar-red);
+}
+
+/* Gradientes de texto */
+.text-gradient-space {
+  background: linear-gradient(to right, var(--star-white), var(--alien-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-alien {
+  background: linear-gradient(to right, var(--alien-green), var(--plasma-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-cosmic {
+  background: linear-gradient(to right, var(--plasma-blue), var(--warp-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Estilos para links */
+a {
+  color: var(--alien-green);
+  text-decoration: none;
+  transition: color var(--transition-medium), text-shadow var(--transition-medium);
+}
+
+a:hover {
+  color: var(--plasma-blue);
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+/* Estilos para botões */
+.btn {
+  background: var(--button-gradient);
+  color: var(--star-white);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Estilos para inputs */
+input, textarea, select {
+  background-color: rgba(12, 18, 32, 0.8);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--border-radius-sm);
+  color: var(--star-white);
+  padding: 0.75rem 1rem;
+  transition: all var(--transition-medium);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--alien-green);
+  box-shadow: 0 0 0 2px rgba(0, 246, 255, 0.2);
+}
+
+/* Estilos para cards */
+.card {
+  background: var(--card-gradient);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--cosmic-shadow);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hologram-shadow);
+}
+
+/* Estilos para o modo escuro (já é o padrão) */
+.light-theme {
+  --space-black: #f0f4f8;
+  --deep-space: #e1e8f0;
+  --cosmic-blue: #c5d5e8;
+  --nebula-purple: #d8c5e8;
+  --star-white: #1a202c;
+  
+  --card-gradient: linear-gradient(to bottom, rgba(197, 213, 232, 0.8), rgba(240, 244, 248, 0.9));
+  --space-gradient: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-blue) 50%, var(--nebula-purple) 100%);
+  
+  --cosmic-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+  :root {
+    --font-size-4xl: 2rem;
+    --font-size-3xl: 1.75rem;
+    --font-size-2xl: 1.5rem;
+    --spacing-3xl: 3rem;
+    --spacing-2xl: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --font-size-4xl: 1.75rem;
+    --font-size-3xl: 1.5rem;
+    --font-size-2xl: 1.25rem;
+    --spacing-3xl: 2.5rem;
+    --spacing-2xl: 1.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --font-size-4xl: 1.5rem;
+    --font-size-3xl: 1.25rem;
+    --font-size-2xl: 1.125rem;
+    --spacing-3xl: 2rem;
+    --spacing-2xl: 1.25rem;
+  }
+}

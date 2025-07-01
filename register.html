@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - UFO Sightings</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/social-login.css">
+    <link rel="stylesheet" href="css/sci-fi-theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0e17">
+</head>
+<body class="auto-theme">
+    <header>
+        <div class="container">
+            <h1>UFO Sightings</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sightings.html">Avistamentos</a></li>
+                    <li><a href="add-sighting.html">Adicionar</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html" class="active">Registrar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Criar Conta</h2>
+            <div id="alert-container"></div>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirmar Senha</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit" class="btn btn-block">Registrar</button>
+            </form>
+            
+            <div class="social-login-container">
+                <p class="text-center mt-2">Ou registre-se com:</p>
+                <div class="social-buttons">
+                    <button id="google-login" class="social-button google-button hover-glow">
+                        <img src="/images/google-icon.svg" alt="Google">
+                        Google
+                    </button>
+                    <button id="facebook-login" class="social-button facebook-button hover-glow">
+                        <img src="/images/facebook-icon.svg" alt="Facebook">
+                        Facebook
+                    </button>
+                    <button id="twitter-login" class="social-button twitter-button hover-glow">
+                        <img src="/images/twitter-icon.svg" alt="Twitter">
+                        Twitter
+                    </button>
+                </div>
+            </div>
+            
+            <div class="form-footer">
+                <p>Já tem uma conta? <a href="login.html" class="text-glow">Faça login</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 UFO Sightings - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Indicador de status offline -->
+    <div id="offline-indicator" style="display: none;">
+        <strong>Você está offline.</strong> Algumas funcionalidades podem estar limitadas.
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/offline-manager.js"></script>
+    <script src="js/sci-fi-effects.js"></script>
+    <script>
+        // Registrar o service worker para funcionalidade offline
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar o Service Worker:', error);
+                    });
+            });
+        }
+        
+        // Verificar status online/offline
+        function updateOnlineStatus() {
+            const offlineIndicator = document.getElementById('offline-indicator');
+            if (offlineIndicator) {
+                if (navigator.onLine) {
+                    offlineIndicator.style.display = 'none';
+                } else {
+                    offlineIndicator.style.display = 'block';
+                }
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus(); // Verificar status inicial
+        
+        // Efeitos visuais para os campos de formulário
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('input-focus');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('input-focus');
+                });
+            });
+            
+            // Animação para o botão de registro
+            const registerButton = document.querySelector('.btn');
+            registerButton.addEventListener('mouseenter', function() {
+                this.classList.add('btn-hover');
+            });
+            
+            registerButton.addEventListener('mouseleave', function() {
+                this.classList.remove('btn-hover');
+            });
+            
+            // Validação de senha com efeito visual
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm-password');
+            
+            confirmPassword.addEventListener('input', function() {
+                if (this.value === password.value) {
+                    this.style.borderColor = 'var(--alien-green)';
+                    this.style.boxShadow = '0 0 0 2px rgba(0, 246, 255, 0.2)';
+                } else {
+                    this.style.borderColor = 'var(--nova-pink)';
+                    this.style.boxShadow = '0 0 0 2px rgba(236, 72, 153, 0.2)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
